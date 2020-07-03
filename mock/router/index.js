@@ -1,5 +1,5 @@
 var Mock = require('mockjs')
-var { menus } = require('./datas')
+var { routes } = require('./datas')
 var Random = Mock.Random
 
 module.exports = function (server) {
@@ -33,15 +33,6 @@ module.exports = function (server) {
     })
 
     server.get('/role/:id', (req, res) => {
-        const permissions = menus.map(item => {
-            const opt = {
-                'id': '@id',
-                'title': '@ctitle(2, 8)',
-                'describe': '@csentence(6, 18)',
-                'parent': '@id',
-            }
-            return Object.assign({}, opt, item)
-        })
         const data = Mock.mock({
             code: 200,
             result: {
@@ -52,8 +43,16 @@ module.exports = function (server) {
                 role: {
                     'title|1': ['root', 'admin', 'author', 'reader'],
                     describe: /[a-z]{6}[A-Z]{6}[0-9]{6}/,
-                    permissions,
                 },
+                routes: routes.map(item => {
+                    const opt = {
+                        'id': '@id',
+                        'title': '@ctitle(2, 8)',
+                        'describe': '@csentence(6, 18)',
+                        // 'parent': '@id',
+                    }
+                    return Object.assign({}, opt, item)
+                }),
             }
         })
         res.jsonp(data)
