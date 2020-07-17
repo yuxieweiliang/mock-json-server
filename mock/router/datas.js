@@ -1,6 +1,12 @@
 
 exports.routes = [
   {
+    id: 'xxxxxxxindex',
+    title: 'index',
+    type: 'item',
+    path: '/index',
+  },
+  {
     id: '111111111',
     title: 'Welcome',
     type: 'item',
@@ -24,6 +30,12 @@ exports.routes = [
     title: 'refs',
     type: 'item',
     path: '/demo-refs',
+  },
+  {
+    id: 'xxx432xxxx',
+    title: 'HOC',
+    type: 'item',
+    path: '/demo-hoc-width-auto',
   },
   {
     id: 'xxxxxxsx',
