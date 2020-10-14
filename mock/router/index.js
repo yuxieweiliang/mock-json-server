@@ -16,7 +16,7 @@ module.exports = function (server) {
         })
         res.jsonp(data)
     })
-
+// 
     server.get('/echo/:id', (req, res) => {
         const data = Mock.mock({
             'code': 200,
